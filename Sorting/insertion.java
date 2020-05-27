@@ -1,3 +1,4 @@
+//INSERTION SORT
 public class insertion {
 
     static void swap(int a, int b) {

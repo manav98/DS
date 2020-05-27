@@ -1,3 +1,4 @@
+//QUICK SORT
 public class quick {
     static void quickSort(int[] arr, int start, int pivot) {
         if (start < pivot) {

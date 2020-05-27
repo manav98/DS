@@ -1,3 +1,4 @@
+//MERGE SORT
 public class merge {
 
     static void mergeSort(int[] arr, int left, int right) {

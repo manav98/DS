@@ -1,3 +1,5 @@
+//DEPTH FIRST SEARCH
+
 public class DFS
 {
     static void ddfs(int[][] adjList, boolean[] visited, int source, int destination)
