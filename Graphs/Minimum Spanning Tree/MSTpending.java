@@ -1,9 +1,10 @@
 //KRUSKAL'S ALGORITHM
+//UNION HEAP IMPLEMENTATION PENDING
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class MST
+public class MSTpending
 {
     static class Edge implements Comparable<Edge>
     {
@@ -18,20 +19,51 @@ public class MST
     }
 
 
-    int V;
-    int E;
+    int V;  //number of Vertices
+    int E;  //number of edges
     Edge[] edges;
+
+    static void makeUnionFind(int[] components, int[] componentsSize, List<Edge>[] members)
+    {
+        MST ob = new MST();
+        for(int i=0;i<components.length;i++)
+        {
+            components[i] = i;
+            componentsSize[i] = 1;
+            members[i] = new ArrayList<Edge>();
+            members[i].add(ob.edges[i]);
+        }
+    }
+
+    static void merge(List<Edge> m1, List<Edge> m2, int[] componentSize)
+    {
+        int i=0;
+        if(m1.size() < m2.size())
+        {
+            while(i < m1.size())
+            {
+                m2.add(m1.get(i));
+                i++;
+                componentSize[m2]++;
+            }
+        }
+        else
+        {
+            while(i < m2.size())
+            {
+                m1.add(m2.get(i));
+                i++;
+            }
+        }
+    }
 
     void findMST()
     {
         Arrays.sort(edges);
         int[] components = new int[V];
         int[] componentSize = new int[V];
-        for(int i=0;i<V;i++)
-        {
-            components[i] = i;
-            componentSize[i] = 1;
-        }
+        List<Edge>[] members= new ArrayList[V]; //lists of members of every component
+        makeUnionFind(components, componentSize, members);
         int i=0;
         List<Edge> TE = new ArrayList<>();
         Edge curr;
@@ -41,14 +73,7 @@ public class MST
             if(components[curr.source] != components[curr.destination])
             {
                 TE.add(curr);
-                //Union
-                for(int j=0;j<V;j++)
-                {
-                    if(components[j] == components[curr.destination])
-                    {
-                        components[j] = components[curr.source];
-                    }
-                }
+                merge(members[curr.source], members[curr.destination], componentSize);
             }
         }
         int itr=0;
