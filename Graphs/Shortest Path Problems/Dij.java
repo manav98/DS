@@ -1,6 +1,8 @@
 //DIJKASTRA'S ALGORITHM
-class Dij {
-    static int[] dijkastra(int[][] graph, int src) {
+class Dij 
+{
+    static int[] dijkastra(int[][] graph, int src) 
+    {
         int n = graph.length;
         boolean[] visited = new boolean[n];
         int[] distance = new int[n];
@@ -43,7 +45,8 @@ class Dij {
     }
 
     public static void main(String[] args) {
-        int graph[][] = {{0, 10, 80, 0, 0, 0, 0},
+        int graph[][] = 
+        {{0, 10, 80, 0, 0, 0, 0},
         {10, 0, 6, 0, 20, 0, 0}, 
         {80, 6, 0, 70, 0, 0, 0}, 
         {0, 0, 70, 0, 0, 0, 0},
@@ -53,7 +56,8 @@ class Dij {
         int source = 0;
         int[] shortestPaths = dijkastra(graph, source);
         System.out.println("Vertex" + "\t" + "Distance");
-        for (int i =0;i<shortestPaths.length; i++) {
+        for (int i =0;i<shortestPaths.length; i++) 
+        {
             System.out.println(i+1 + "\t" + shortestPaths[i]);
         }
     }
