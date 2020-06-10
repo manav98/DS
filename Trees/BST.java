@@ -152,6 +152,55 @@ public class BST
         return t;
     }
 
+    Node deleteNode(Node root, int value)
+    {
+        if (root == null)
+        {
+            return root;
+        }
+        Node curr = findNode(root, value);
+        if (curr.left == null && curr.right == null)
+        {
+            if (curr.parent.left == curr)
+            {
+                curr.parent.left = null;
+            }
+            else
+            {
+                curr.parent.right = null;
+            }
+        }
+        else if (curr.left == null && curr.right != null)
+        {
+            if (curr.parent.left == curr)
+            {
+                curr.parent.left = curr.right;
+            }
+            else
+            {
+                curr.parent.right = curr.right;
+            }
+        }
+        else if (curr.left != null && curr.right == null)
+        {
+            if (curr.parent.right == curr)
+            {
+                curr.parent.right = curr.left;
+            }
+            else
+            {
+                curr.parent.left = curr.left;
+            }
+        }
+        else
+        {
+            Node prev = findPredecessor(root, curr.key);
+            curr.key = prev.key;
+            deleteNode(curr.left, prev.key);
+        }
+        return root;
+    }
+
     public static void main(String[] args)
     {
         BST tree = new BST();
@@ -173,7 +222,8 @@ public class BST
         value = 21;
         System.out.println("Previous element of " + value + " is: " + tree.findPredecessor(tree.root, value).key);
         System.out.println("Next element of" + value + " is: " + tree.findSucessor(tree.root, value).key);
-        //tree.root = tree.deleteNode(tree.root, 37);
-        //tree.inOrder(tree.root);
+        System.out.println("\n\n\n\n\n\n");
+        tree.root = tree.deleteNode(tree.root, 37);
+        tree.inOrder(tree.root);
     }
 }
