@@ -1,19 +1,19 @@
+class Node
+{
+    int key;
+    Node parent;
+    Node left;
+    Node right;
+
+    Node(int value)
+    {
+        key = value;
+        left = right = null;
+    }
+}
+
 public class BST
 {
-    static class Node
-    {
-        int key;
-        Node parent;
-        Node left;
-        Node right;
-
-        Node(int value)
-        {
-            key = value;
-            left = right = null;
-        }
-    }
-
     Node root;
 
     BST()

@@ -5,7 +5,7 @@ public class DFS
     static void ddfs(int[][] adjList, boolean[] visited, int source, int destination)
     {
         visited[source] = true;
-        if(source == destination)
+        if (source == destination)
         {
             return;
         }

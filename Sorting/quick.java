@@ -1,10 +1,15 @@
 //QUICK SORT
-public class quick {
-    static void quickSort(int[] arr, int start, int pivot) {
-        if (start < pivot) {
+public class quick
+{
+    static void quickSort(int[] arr, int start, int pivot)
+    {
+        if (start < pivot)
+        {
             int seperator = start;
-            for (int i = start; i < pivot; i++) {
-                if (arr[i] < arr[pivot]) {
+            for (int i = start; i < pivot; i++)
+            {
+                if (arr[i] < arr[pivot])
+                {
                     int temp = arr[i];
                     arr[i] = arr[seperator];
                     arr[seperator] = temp;
@@ -19,10 +24,12 @@ public class quick {
         }
     }
 
-    public static void main(String[] args) {
-        int[] arr = { 43, 32, 22, 78, 63, 57, 91, 13 };
+    public static void main(String[] args)
+    {
+        int[] arr = {43, 32, 22, 78, 63, 57, 91, 13};
         quickSort(arr, 0, arr.length - 1);
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 0; i < arr.length; i++)
+        {
             System.out.print(arr[i] + " ");
         }
     }

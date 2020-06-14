@@ -1,4 +1,5 @@
 //KRUSKAL'S ALGORITHM
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -27,34 +28,34 @@ public class MST
         Arrays.sort(edges);
         int[] components = new int[V];
         int[] componentSize = new int[V];
-        for(int i=0;i<V;i++)
+        for (int i = 0; i < V; i++)
         {
             components[i] = i;
             componentSize[i] = 1;
         }
-        int i=0;
+        int i = 0;
         List<Edge> TE = new ArrayList<>();
         Edge curr;
-        while (TE.size() < V-1)
+        while (TE.size() < V - 1)
         {
             curr = edges[i++];
-            if(components[curr.source] != components[curr.destination])
+            if (components[curr.source] != components[curr.destination])
             {
                 TE.add(curr);
                 //Union
-                for(int j=0;j<V;j++)
+                for (int j = 0; j < V; j++)
                 {
-                    if(components[j] == components[curr.destination])
+                    if (components[j] == components[curr.destination])
                     {
                         components[j] = components[curr.source];
                     }
                 }
             }
         }
-        int itr=0;
+        int itr = 0;
         while (itr < TE.size())
         {
-            System.out.println(TE.get(itr).source + "--" + TE.get(itr).destination +" ->" + TE.get(itr).weight);
+            System.out.println(TE.get(itr).source + "--" + TE.get(itr).destination + " ->" + TE.get(itr).weight);
             itr++;
         }
     }

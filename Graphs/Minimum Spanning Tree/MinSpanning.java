@@ -40,7 +40,7 @@ class MinSpanning
             visited[k] = true;
             for (int v = 0; v < n; v++)
             {
-                if(!visited[v] && distance[v] > graph[k][v] && graph[k][v] != 0)
+                if (!visited[v] && distance[v] > graph[k][v] && graph[k][v] != 0)
                 {
                     distance[v] = graph[k][v];
                     neighbour[v] = k;
@@ -53,7 +53,7 @@ class MinSpanning
     public static void main(String[] args)
     {
         int[][] graph =
-                        {{0, 2, 0, 6, 0},
+                {{0, 2, 0, 6, 0},
                         {2, 0, 3, 8, 5},
                         {0, 3, 0, 0, 7},
                         {6, 8, 0, 0, 9},

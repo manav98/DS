@@ -5,7 +5,7 @@ public class Bellman
     {
         int n = graph.length;
         int[] distance = new int[n];
-        for (int i = 0; i < n ; i++)
+        for (int i = 0; i < n; i++)
             distance[i] = Integer.MAX_VALUE;
 
         distance[src] = 0;
@@ -26,35 +26,35 @@ public class Bellman
                 }
             }
         }
-            //checking for negetive loop
-            for (int j = src; j < n; j++)
+        //checking for negetive loop
+        for (int j = src; j < n; j++)
+        {
+            for (int k = 0; k < n; k++)
             {
-                for (int k = 0; k < n; k++)
+                if (graph[j][k] != 0)
                 {
-                    if (graph[j][k] != 0)
+                    if (distance[j] != Integer.MAX_VALUE && distance[k] > distance[j] + graph[j][k])
                     {
-                        if (distance[j] != Integer.MAX_VALUE && distance[k] > distance[j] + graph[j][k])
-                        {
-                            System.out.println("Negetive weight cycle found");
-                            break;
-                            //return new int[n];
-                        }
+                        System.out.println("Negetive weight cycle found");
+                        break;
+                        //return new int[n];
                     }
                 }
             }
+        }
         return distance;
     }
 
     public static void main(String[] args)
     {
         int[][] adjmat = {{0, 10, 0, 0, 0, 0, 0, 8},
-        					{0, 0, 0, 0, 0, 2, 0, 0}, 
-        					{0, -1, 0, 1, 0, 0, 0, 0},
-                			{0, 0, 0, 0, 3, 0, 0, 0}, 
-                			{0, 0, 0, 0, 0, -1, 0, 0}, 
-                			{0, 0, -2, 0, 0, 0, 0, 0},
-						    {0, -4, 0, 0, 0, -1, 0, 0}, 
-						    {0, 0, 0, 0, 0, 0, 1, 0}};
+                {0, 0, 0, 0, 0, 2, 0, 0},
+                {0, -1, 0, 1, 0, 0, 0, 0},
+                {0, 0, 0, 0, 3, 0, 0, 0},
+                {0, 0, 0, 0, 0, -1, 0, 0},
+                {0, 0, -2, 0, 0, 0, 0, 0},
+                {0, -4, 0, 0, 0, -1, 0, 0},
+                {0, 0, 0, 0, 0, 0, 1, 0}};
         int src = 0;
         int[] shortestPaths = BellFord(adjmat, src);
         System.out.println("Vertex" + "\t" + "Distance");

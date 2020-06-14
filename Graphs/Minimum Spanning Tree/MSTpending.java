@@ -1,5 +1,6 @@
 //KRUSKAL'S ALGORITHM
 //UNION HEAP IMPLEMENTATION PENDING
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -26,7 +27,7 @@ public class MSTpending
     static void makeUnionFind(int[] components, int[] componentsSize, List<Edge>[] members)
     {
         MST ob = new MST();
-        for(int i=0;i<components.length;i++)
+        for (int i = 0; i < components.length; i++)
         {
             components[i] = i;
             componentsSize[i] = 1;
@@ -37,10 +38,10 @@ public class MSTpending
 
     static void merge(List<Edge> m1, List<Edge> m2, int[] componentSize)
     {
-        int i=0;
-        if(m1.size() < m2.size())
+        int i = 0;
+        if (m1.size() < m2.size())
         {
-            while(i < m1.size())
+            while (i < m1.size())
             {
                 m2.add(m1.get(i));
                 i++;
@@ -49,7 +50,7 @@ public class MSTpending
         }
         else
         {
-            while(i < m2.size())
+            while (i < m2.size())
             {
                 m1.add(m2.get(i));
                 i++;
@@ -62,24 +63,24 @@ public class MSTpending
         Arrays.sort(edges);
         int[] components = new int[V];
         int[] componentSize = new int[V];
-        List<Edge>[] members= new ArrayList[V]; //lists of members of every component
+        List<Edge>[] members = new ArrayList[V]; //lists of members of every component
         makeUnionFind(components, componentSize, members);
-        int i=0;
+        int i = 0;
         List<Edge> TE = new ArrayList<>();
         Edge curr;
-        while (TE.size() < V-1)
+        while (TE.size() < V - 1)
         {
             curr = edges[i++];
-            if(components[curr.source] != components[curr.destination])
+            if (components[curr.source] != components[curr.destination])
             {
                 TE.add(curr);
                 merge(members[curr.source], members[curr.destination], componentSize);
             }
         }
-        int itr=0;
+        int itr = 0;
         while (itr < TE.size())
         {
-            System.out.println(TE.get(itr).source + "--" + TE.get(itr).destination +" ->" + TE.get(itr).weight);
+            System.out.println(TE.get(itr).source + "--" + TE.get(itr).destination + " ->" + TE.get(itr).weight);
             itr++;
         }
     }
